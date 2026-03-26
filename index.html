@@ -3,69 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta Exclusiva - GAMEFLIX</title>
+    <title>GAMEFLIX - Oferta Exclusiva e Temporária</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gameflix-red': '#e50914',
+                        'gameflix-dark': '#000000',
+                        'gameflix-card': '#0a0a0a',
+                    },
+                    boxShadow: {
+                        'red-neon': '0 0 20px rgba(229, 9, 20, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; }
-        .upsell-card { border: 1px solid #333; background: linear-gradient(180deg, #111 0%, #000 100%); }
-        .glow-red { box-shadow: 0 0 30px rgba(229, 9, 20, 0.3); }
-        .btn-upgrade { background-color: #e50914; transition: 0.3s; }
-        .btn-upgrade:hover { background-color: #ff0f1b; transform: scale(1.02); }
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 15px rgba(229, 9, 20, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(229, 9, 20, 0.7); transform: scale(1.02); }
+        }
+        .btn-pulse { animation: pulse-red 2s infinite; }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 md:p-10">
+<body class="bg-gameflix-dark text-white font-sans antialiased">
 
-    <div class="w-full max-w-2xl text-center mb-8">
-        <span class="bg-[#e50914] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest animate-pulse">
-            Aguarde! Não feche esta página
-        </span>
-        <h2 class="text-xl md:text-3xl font-black mt-4 uppercase leading-tight">
-            VOCÊ GANHOU UM <span class="text-[#e50914]">UPGRADE DE CRÉDITO</span>
-        </h2>
-        <p class="text-zinc-400 text-sm mt-2 font-medium italic">Seu investimento anterior foi convertido em bônus!</p>
-    </div>
+    <div class="min-h-screen flex flex-col items-center p-4 md:p-8">
 
-    <div class="w-full max-w-3xl rounded-lg overflow-hidden border border-zinc-800 aspect-video mb-8 bg-zinc-900 glow-red">
-        <iframe 
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/ID_DO_VIDEO_UPSELL?autoplay=1&rel=0&modestbranding=1" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <div class="w-full max-w-lg upsell-card p-6 md:p-8 rounded-2xl text-center border-t-2 border-t-[#e50914]">
-        <h3 class="text-lg font-bold text-zinc-300 mb-4 uppercase tracking-tighter">Desbloquear Pack Ultimate (106 Jogos)</h3>
-        
-        <div class="flex flex-col gap-2 mb-8 bg-black/50 p-4 rounded-xl border border-zinc-800">
-            <div class="flex justify-between text-xs text-zinc-500">
-                <span>Preço VIP Ultimate</span>
-                <span class="line-through">R$ 149,90</span>
+        <header class="w-full max-w-4xl flex justify-between items-center py-4 border-b border-zinc-900 mb-8">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+                <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Aguardando Sincronização Final</span>
             </div>
-            <div class="flex justify-between text-[#e50914] font-bold text-sm">
-                <span>Seu Crédito Atual</span>
-                <span>- R$ 84,90</span>
-            </div>
-            <div class="h-[1px] bg-zinc-800 my-1"></div>
-            <div class="flex justify-between items-center text-white">
-                <span class="font-black text-base uppercase">Pagar apenas:</span>
-                <span class="text-4xl font-black text-white">R$ 65,00</span>
-            </div>
-        </div>
+            <h1 class="text-xl font-black text-white italic opacity-40">GAMEFLIX</h1>
+        </header>
 
-        <a href="LINK_DO_CHECKOUT_DIFERENCA" class="btn-upgrade block w-full text-white font-black text-xl py-5 rounded-md uppercase tracking-tighter mb-4 shadow-lg">
-            SIM! COMPLETAR MEU ACESSO
-        </a>
+        <main class="w-full max-w-4xl flex flex-col items-center text-center flex-grow justify-center">
 
-        <a href="LINK_DO_DOWNSELL_OU_ENTREGA" class="text-zinc-600 text-[10px] uppercase font-bold hover:text-zinc-400 transition-colors underline tracking-widest">
-            Não, prefiro continuar com acesso limitado
-        </a>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tighter mb-4">
+                <span class="text-gameflix-red italic">ESPERA!</span> Não feche esta janela agora...
+            </h1>
+            
+            <p class="text-zinc-400 text-base md:text-lg max-w-2xl mb-10 leading-relaxed px-4">
+                Nossa equipe está configurando seu acesso básico. Enquanto isso, preparei uma <strong class="text-white">oportunidade única</strong> para você não ficar limitado. <strong class="text-gameflix-red uppercase tracking-tighter">Assista ao vídeo curto abaixo:</strong>
+            </p>
+
+            <div class="w-full aspect-video bg-gameflix-card rounded-2xl shadow-2xl border border-zinc-800 p-2 backdrop-blur-sm relative overflow-hidden group mb-12 max-w-3xl">
+                
+                <iframe 
+                    class="w-full h-full rounded-xl"
+                    src="https://www.youtube.com/embed/ID_DO_VIDEO_UPSELL?autoplay=1&rel=0&modestbranding=1" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+
+                <div class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center gap-3 z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none">
+                    <div class="w-10 h-10 border-4 border-t-gameflix-red border-zinc-800 rounded-full animate-spin"></div>
+                    <p class="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">Sincronizando biblioteca (85%)...</p>
+                </div>
+            </div>
+
+            <div class="w-full max-w-xl bg-gameflix-card p-6 md:p-8 rounded-2xl shadow-red-neon border border-gameflix-red/30 flex flex-col items-center gap-6 mb-16">
+                
+                <div class="text-center">
+                    <p class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-2">Upgrade de Crédito Ativado</p>
+                    <h2 class="text-2xl md:text-3xl font-black text-white leading-none uppercase">LIBERAR PACK ULTIMATE</h2>
+                    
+                    <div class="mt-6 flex flex-col gap-1 bg-black/40 p-4 rounded-xl border border-zinc-800 w-full">
+                        <div class="flex justify-between text-[10px] text-zinc-500 uppercase font-bold">
+                            <span>Preço VIP</span>
+                            <span class="line-through">R$ 149,90</span>
+                        </div>
+                        <div class="flex justify-between text-gameflix-red font-black text-xs uppercase">
+                            <span>Seu Crédito</span>
+                            <span>- R$ 84,90</span>
+                        </div>
+                        <div class="h-[1px] bg-zinc-800 my-1"></div>
+                        <p class="text-3xl font-black text-white italic">R$ 65,00</p>
+                    </div>
+                </div>
+
+                <a href="URL_DE_PAGAMENTO_UPGRADE" class="w-full btn-pulse bg-gameflix-red text-white font-black text-lg md:text-xl py-5 px-6 rounded-xl transition-all text-center uppercase tracking-tighter hover:bg-white hover:text-black">
+                    ADICIONAR ISSO AO MEU ACESSO!
+                </a>
+
+                <a href="URL_DO_DOWNSELL_OU_ENTREGA" class="text-zinc-600 hover:text-zinc-400 transition-colors text-[10px] uppercase font-bold underline tracking-widest">
+                    Não, prefiro continuar limitado e pagar o preço cheio depois.
+                </a>
+            </div>
+
+        </main>
+
+        <footer class="w-full max-w-4xl text-center py-6 border-t border-zinc-900 text-zinc-700 text-[10px] uppercase font-bold tracking-widest">
+            © 2026 GAMEFLIX BRASIL. Todos os direitos reservados. Sincronização via Servidores Dedicados.
+        </footer>
+
     </div>
-
-    <footer class="mt-12 text-[9px] text-zinc-800 uppercase font-bold tracking-widest">
-        Oferta única e exclusiva para novos membros
-    </footer>
 
 </body>
 </html>
